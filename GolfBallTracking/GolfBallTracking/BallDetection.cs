@@ -23,8 +23,9 @@ namespace GolfBallTracking
         {
             get { return instance; }
         }
-        
-        public Mat TemplateImage { get; set; }
+
+        public Mat TemplateImageOriginal { get; set; }
+        public Mat TemplateImage { get; set; }	
 
         private int templateSize;
         public int TemplateSize
@@ -34,8 +35,7 @@ namespace GolfBallTracking
             { 
                 templateSize = value;
                 Size size = new Size(templateSize, templateSize);
-                loadTemplateImage();
-                CvInvoke.Resize(TemplateImage, TemplateImage, size, 10, 0, Inter.Lanczos4);
+                CvInvoke.Resize(TemplateImageOriginal, TemplateImage, size, 0, 0, Inter.Lanczos4);
               
                 /*
                 MCvScalar m = new MCvScalar(1);
@@ -55,13 +55,12 @@ namespace GolfBallTracking
 
         private BallDetection()
         {
-            loadTemplateImage();
-            TemplateSize = TemplateImage.Size.Width;
+            TemplateImageOriginal = new Mat(filePathOfTemplate, Emgu.CV.CvEnum.LoadImageType.Grayscale);
+            TemplateImage = new Mat();
+            TemplateImageOriginal.CopyTo(TemplateImage);
+            TemplateSize = TemplateImage.Size.Width;  
         }
 
-        private void loadTemplateImage() {
-            TemplateImage = new Mat(filePathOfTemplate, Emgu.CV.CvEnum.LoadImageType.Grayscale);
-        }
 
         public void Detect(MainForm mainForm, Mat input, int value) 
         {
