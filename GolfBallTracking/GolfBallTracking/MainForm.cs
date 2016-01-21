@@ -164,7 +164,8 @@ namespace GolfBallTracking
 
         private void nudValue_ValueChanged(object sender, EventArgs e)
         {
-            BallDetection.Instance.Detect(this, image_array.Last(), (int)nudValue.Value);
+            if (image_array.Count > 1)
+                BallDetection.Instance.Detect(this, image_array.Last(), (int)nudValue.Value);
         }
     }
 }
