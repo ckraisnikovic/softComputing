@@ -40,12 +40,16 @@
             this.btnPlayPauseVideo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.nudTemplateSize = new System.Windows.Forms.NumericUpDown();
-            this.btnDetectBall = new System.Windows.Forms.Button();
+            this.btnClearBgr = new System.Windows.Forms.Button();
             this.pbTemplateImage = new System.Windows.Forms.PictureBox();
             this.pbBall = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nudValue = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.camImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frameSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTemplateSize)).BeginInit();
@@ -53,6 +57,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBall)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // camImageBox
@@ -110,7 +118,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(720, 177);
+            this.label1.Location = new System.Drawing.Point(730, 153);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 8;
@@ -118,40 +126,40 @@
             // 
             // nudTemplateSize
             // 
-            this.nudTemplateSize.Location = new System.Drawing.Point(677, 175);
+            this.nudTemplateSize.Location = new System.Drawing.Point(677, 151);
             this.nudTemplateSize.Maximum = new decimal(new int[] {
-            72,
+            35,
             0,
             0,
             0});
             this.nudTemplateSize.Minimum = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
             this.nudTemplateSize.Name = "nudTemplateSize";
-            this.nudTemplateSize.Size = new System.Drawing.Size(37, 20);
+            this.nudTemplateSize.Size = new System.Drawing.Size(47, 20);
             this.nudTemplateSize.TabIndex = 9;
             this.nudTemplateSize.Value = new decimal(new int[] {
-            40,
+            15,
             0,
             0,
             0});
             this.nudTemplateSize.ValueChanged += new System.EventHandler(this.nudTemplateSize_ValueChanged);
             // 
-            // btnDetectBall
+            // btnClearBgr
             // 
-            this.btnDetectBall.Location = new System.Drawing.Point(677, 146);
-            this.btnDetectBall.Name = "btnDetectBall";
-            this.btnDetectBall.Size = new System.Drawing.Size(115, 23);
-            this.btnDetectBall.TabIndex = 10;
-            this.btnDetectBall.Text = "Detect golf ball";
-            this.btnDetectBall.UseVisualStyleBackColor = true;
-            this.btnDetectBall.Click += new System.EventHandler(this.btnDetectBall_Click);
+            this.btnClearBgr.Location = new System.Drawing.Point(677, 322);
+            this.btnClearBgr.Name = "btnClearBgr";
+            this.btnClearBgr.Size = new System.Drawing.Size(115, 23);
+            this.btnClearBgr.TabIndex = 10;
+            this.btnClearBgr.Text = "Clear all tracks";
+            this.btnClearBgr.UseVisualStyleBackColor = true;
+            this.btnClearBgr.Click += new System.EventHandler(this.btnDetectBall_Click);
             // 
             // pbTemplateImage
             // 
-            this.pbTemplateImage.Location = new System.Drawing.Point(677, 235);
+            this.pbTemplateImage.Location = new System.Drawing.Point(677, 195);
             this.pbTemplateImage.Name = "pbTemplateImage";
             this.pbTemplateImage.Size = new System.Drawing.Size(94, 94);
             this.pbTemplateImage.TabIndex = 11;
@@ -177,7 +185,7 @@
             // 
             // nudValue
             // 
-            this.nudValue.Location = new System.Drawing.Point(830, 46);
+            this.nudValue.Location = new System.Drawing.Point(678, 119);
             this.nudValue.Maximum = new decimal(new int[] {
             255,
             0,
@@ -196,23 +204,63 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(883, 48);
+            this.label2.Location = new System.Drawing.Point(730, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 15;
             this.label2.Text = "Threshold value";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(1042, 100);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(131, 114);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(1042, 220);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(131, 114);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Location = new System.Drawing.Point(1042, 344);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(131, 114);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 18;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Location = new System.Drawing.Point(677, 367);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(115, 126);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 19;
+            this.pictureBox5.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 575);
+            this.ClientSize = new System.Drawing.Size(1267, 575);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nudValue);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pbBall);
             this.Controls.Add(this.pbTemplateImage);
-            this.Controls.Add(this.btnDetectBall);
+            this.Controls.Add(this.btnClearBgr);
             this.Controls.Add(this.nudTemplateSize);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnPlayPauseVideo);
@@ -229,6 +277,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,12 +297,16 @@
         private System.Windows.Forms.Button btnPlayPauseVideo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudTemplateSize;
-        private System.Windows.Forms.Button btnDetectBall;
+        private System.Windows.Forms.Button btnClearBgr;
         private System.Windows.Forms.PictureBox pbTemplateImage;
         private System.Windows.Forms.PictureBox pbBall;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.NumericUpDown nudValue;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
 

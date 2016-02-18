@@ -62,3 +62,32 @@ E:\Soft\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.csprojResol
 E:\Soft\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.MainForm.resources
 E:\Soft\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.Properties.Resources.resources
 E:\Soft\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.csproj.GenerateResource.Cache
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\GolfBallTracking.exe.config
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.exe
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\GolfBallTracking.exe
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\GolfBallTracking.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Contrib.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Cuda.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.OCR.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Shape.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Stitching.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Superres.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.UI.GL.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.VideoStab.dll
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Contrib.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Cuda.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.ML.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.OCR.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Shape.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Stitching.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.Superres.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.UI.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.CV.VideoStab.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\bin\Debug\Emgu.Util.pdb
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.csprojResolveAssemblyReference.cache
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.MainForm.resources
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.Properties.Resources.resources
+E:\SoftComputing Git\softComputing\GolfBallTracking\GolfBallTracking\obj\Debug\GolfBallTracking.csproj.GenerateResource.Cache

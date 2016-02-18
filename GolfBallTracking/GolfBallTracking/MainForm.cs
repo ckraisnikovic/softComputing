@@ -23,7 +23,12 @@ namespace GolfBallTracking
         private int frameCount;
         private int currentFrameNumber;
         private bool tracking;
-        private List<Mat> image_array = new List<Mat>();
+        public List<Mat> image_array = new List<Mat>();
+        public List<Point> possibleBallPoints = new List<Point>();
+        public List<Point> possibleBallsInFrame = new List<Point>();
+        public List<Point> trueBallPoints = new List<Point>();
+        public List<Point> kalmanPoints = new List<Point>();
+        private Kalman kalman = null;
 
         public MainForm()
         {
@@ -32,6 +37,7 @@ namespace GolfBallTracking
             tracking = false;
             nudTemplateSize.Value = nudTemplateSize.Maximum;
             showTemplateInPictureBox();
+            KalmanFunctionInit();
         }
 
         private void ReleaseData()
@@ -93,12 +99,28 @@ namespace GolfBallTracking
                 camImageBox.Image = frame;
                 if (tracking)
                 {
-                    if (image_array.Count == 20)
+                    if (image_array.Count >= 6)
+                    {
                         image_array.RemoveAt(0);
+                        possibleBallPoints.Clear();
+                    }
                     image_array.Add(frame);
                     BallDetection.Instance.Detect(this, image_array.Last(), (int)nudValue.Value);
-                }
+                    camImageBox.Image = image_array.Last();
 
+                    MCvScalar color = new MCvScalar(255, 0, 0);
+                    foreach (Point p in trueBallPoints) 
+                    {
+                        kalman.State = new Matrix<double>(new Double[4, 1] { { p.X }, { p.Y }, { 0.3 }, { 0.1 } });
+                        kalman.Predict();
+                        kalman.Correct(kalman.GetMeasurement());
+                        kalman.GoToNextState();
+                        Point estimated = new Point((int)kalman.State.Data[0,0], (int)kalman.State.Data[1,0]);
+                        Rectangle rect = new Rectangle(estimated.X, estimated.Y, 1, 1);
+                        CvInvoke.Rectangle(image_array.Last(), rect, color, 2, LineType.EightConnected);
+                    } 
+                }
+                
                 frameSlider.Value = currentFrameNumber++;
             }
             else
@@ -131,6 +153,7 @@ namespace GolfBallTracking
         {
             currentFrameNumber = frameSlider.Value;
             image_array.Clear();
+            possibleBallPoints.Clear();
             capture.SetCaptureProperty(CapProp.PosFrames, currentFrameNumber);
         }
 
@@ -149,7 +172,9 @@ namespace GolfBallTracking
 
         private void btnDetectBall_Click(object sender, EventArgs e)
         {
-            BallDetection.Instance.Detect(this, image_array.Last(), (int)nudValue.Value);
+            trueBallPoints.Clear();
+            possibleBallPoints.Clear();
+            possibleBallsInFrame.Clear();
         }
 
         public void showGrayImage(Image<Gray, Byte> image) 
@@ -157,15 +182,60 @@ namespace GolfBallTracking
             pbBall.Image = image.Bitmap;
         }
 
-        public void showGrayImageThreshold(Image<Gray, Byte> image)
+        public void showGrayImageThreshold(Mat image)
         {
             pictureBox1.Image = image.Bitmap;
         }
 
         private void nudValue_ValueChanged(object sender, EventArgs e)
         {
-            if (image_array.Count > 1)
+            if (image_array.Count > 0)
                 BallDetection.Instance.Detect(this, image_array.Last(), (int)nudValue.Value);
+        }
+
+        public void showChannels(Mat[] channels, Mat img)
+        {
+            pictureBox2.Image = channels[0].Bitmap;
+            pictureBox3.Image = channels[1].Bitmap;
+            pictureBox4.Image = channels[2].Bitmap;
+            pictureBox5.Image = img.Bitmap;
+        }
+
+        public void KalmanFunctionInit() 
+        {
+            Emgu.CV.Matrix<double> transitionMatrix;
+            Emgu.CV.Matrix<double> measurementMatrix;
+            Emgu.CV.Matrix<double> processNoise;
+            Emgu.CV.Matrix<double> measurementNoise;
+            Emgu.CV.Matrix<double> b;
+            Emgu.CV.Matrix<double> u;
+
+            transitionMatrix = new Emgu.CV.Matrix<double>(new double[,] {
+                    {1, 0, 1, 0},
+                    {0, 1, 0, 1},
+                    {0, 0, 1, 0},
+                    {0, 0, 0, 1}
+				});
+            measurementMatrix = new Emgu.CV.Matrix<double>(new double[,] {
+                    { 1, 0, 0, 0 },
+                    { 0, 1, 0, 0 }
+				});
+            b = new Emgu.CV.Matrix<double>(new Double[] { 0 });
+            u = new Emgu.CV.Matrix<double>(new Double[] { 1 });
+            measurementMatrix.SetIdentity();
+            processNoise = new Emgu.CV.Matrix<double>(4, 4);
+            processNoise.SetIdentity(new MCvScalar(1.0e-2));
+            measurementNoise = new Emgu.CV.Matrix<double>(2, 2);
+            measurementNoise.SetIdentity(new MCvScalar(1.0e-2));
+
+            kalman = new Kalman(transitionMatrix, b, u, processNoise, measurementMatrix, measurementNoise);
+            Console.WriteLine("Success.");
+          //  kalman.State = new Matrix<double>(new Double[4, 1] { { 1 }, { 2 }, { 0 }, { 0 } });
+            kalman.Covariance = new Matrix<double>(new Double[4, 4]);
+            kalman.Covariance.SetIdentity();
+
+         //   kalman.Predict();
+         //   kalman.Correct(kalman.GetMeasurement());
         }
     }
 }

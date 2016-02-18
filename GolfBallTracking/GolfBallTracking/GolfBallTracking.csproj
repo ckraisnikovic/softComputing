@@ -45,8 +45,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.Cuda.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.ML">
-      <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.ML.dll</HintPath>
+    <Reference Include="Emgu.CV.GPU">
+      <HintPath>..\packages\EmguCV.221.x64.1.5\lib\Emgu.CV.GPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.ML, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EmguCV.221.x64.1.5\lib\Emgu.CV.ML.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.OCR">
       <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.OCR.dll</HintPath>
@@ -60,8 +64,9 @@
     <Reference Include="Emgu.CV.Superres">
       <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.Superres.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.CV.UI">
-      <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.UI.dll</HintPath>
+    <Reference Include="Emgu.CV.UI, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EmguCV.221.x64.1.5\lib\Emgu.CV.UI.dll</HintPath>
     </Reference>
     <Reference Include="Emgu.CV.UI.GL">
       <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.UI.GL.dll</HintPath>
@@ -69,9 +74,9 @@
     <Reference Include="Emgu.CV.VideoStab">
       <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.CV.VideoStab.dll</HintPath>
     </Reference>
-    <Reference Include="Emgu.Util, Version=3.0.0.2157, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+    <Reference Include="Emgu.Util, Version=2.2.1.1150, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EmguCV.3.0.0\lib\net451\Emgu.Util.dll</HintPath>
+      <HintPath>..\packages\EmguCV.221.x64.1.5\lib\Emgu.Util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -86,12 +91,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BallDetection.cs" />
+    <Compile Include="Kalman.cs" />
+    <Compile Include="KalmanFilterTracking.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MotionDetection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
