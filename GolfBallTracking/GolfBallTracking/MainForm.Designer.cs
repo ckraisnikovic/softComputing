@@ -43,24 +43,14 @@
             this.btnClearBgr = new System.Windows.Forms.Button();
             this.pbTemplateImage = new System.Windows.Forms.PictureBox();
             this.pbBall = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nudValue = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.camImageBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.frameSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTemplateSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplateImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBall)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // camImageBox
@@ -126,6 +116,7 @@
             // 
             // nudTemplateSize
             // 
+            this.nudTemplateSize.Enabled = false;
             this.nudTemplateSize.Location = new System.Drawing.Point(677, 151);
             this.nudTemplateSize.Maximum = new decimal(new int[] {
             35,
@@ -149,7 +140,8 @@
             // 
             // btnClearBgr
             // 
-            this.btnClearBgr.Location = new System.Drawing.Point(677, 322);
+            this.btnClearBgr.Enabled = false;
+            this.btnClearBgr.Location = new System.Drawing.Point(677, 262);
             this.btnClearBgr.Name = "btnClearBgr";
             this.btnClearBgr.Size = new System.Drawing.Size(115, 23);
             this.btnClearBgr.TabIndex = 10;
@@ -161,7 +153,7 @@
             // 
             this.pbTemplateImage.Location = new System.Drawing.Point(677, 195);
             this.pbTemplateImage.Name = "pbTemplateImage";
-            this.pbTemplateImage.Size = new System.Drawing.Size(94, 94);
+            this.pbTemplateImage.Size = new System.Drawing.Size(40, 40);
             this.pbTemplateImage.TabIndex = 11;
             this.pbTemplateImage.TabStop = false;
             // 
@@ -174,17 +166,9 @@
             this.pbBall.TabIndex = 12;
             this.pbBall.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(830, 273);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(191, 185);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 13;
-            this.pictureBox1.TabStop = false;
-            // 
             // nudValue
             // 
+            this.nudValue.Enabled = false;
             this.nudValue.Location = new System.Drawing.Point(678, 119);
             this.nudValue.Maximum = new decimal(new int[] {
             255,
@@ -210,54 +194,13 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Threshold value";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(1042, 100);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(131, 114);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(1042, 220);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(131, 114);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 17;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Location = new System.Drawing.Point(1042, 344);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(131, 114);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 18;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Location = new System.Drawing.Point(677, 367);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(115, 126);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 19;
-            this.pictureBox5.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 575);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
+            this.ClientSize = new System.Drawing.Size(1050, 575);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nudValue);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pbBall);
             this.Controls.Add(this.pbTemplateImage);
             this.Controls.Add(this.btnClearBgr);
@@ -275,12 +218,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudTemplateSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemplateImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBall)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,13 +238,8 @@
         private System.Windows.Forms.Button btnClearBgr;
         private System.Windows.Forms.PictureBox pbTemplateImage;
         private System.Windows.Forms.PictureBox pbBall;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.NumericUpDown nudValue;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }
 

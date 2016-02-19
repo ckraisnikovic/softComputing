@@ -61,6 +61,5 @@ namespace GolfBallTracking
             mainForm.image_array.Add(output);
         }
        
-
     }
 }

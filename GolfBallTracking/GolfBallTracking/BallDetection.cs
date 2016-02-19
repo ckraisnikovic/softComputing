@@ -103,8 +103,8 @@ namespace GolfBallTracking
                 
                 Rectangle rect = CvInvoke.BoundingRectangle(contours[i]);
                 //Rectangle center
-                int x = rect.X + rect.Size.Width / 2;
-                int y = rect.Y + rect.Size.Height / 2;
+                int x = rect.X + rect.Size.Width;
+                int y = rect.Y + rect.Size.Height;
                 Point possibleBall = new Point(x, y);
                 mainForm.possibleBallsInFrame.Add(possibleBall);
           
@@ -112,8 +112,10 @@ namespace GolfBallTracking
   
             }
              DrawIfItIsBall(mainForm);
+            
              foreach (Point p in mainForm.trueBallPoints)
                  Draw_crosshairs(mainForm, p);
+            
         }
 
         public void DrawIfItIsBall(MainForm mainform)
@@ -169,18 +171,18 @@ namespace GolfBallTracking
 
         public void Draw_crosshairs(MainForm mainForm, Point location)
         {
-            int d = 20;
+            int d = 4;
             Point start = new Point(location.X - d / 2, location.Y);
             Point end = new Point(location.X + d / 2, location.Y);
             LineSegment2D line = new LineSegment2D(start, end);
             Image<Bgr, Byte> image = mainForm.image_array.Last().ToImage<Bgr, Byte>();
-            image.Draw(line, new Bgr(Color.Blue), 1);
-            /*
+            image.Draw(line, new Bgr(Color.Black), 1);
+            
             d = 4;
             start = new Point(location.X, location.Y - d / 2);
             end = new Point(location.X, location.Y + d / 2);
             line = new LineSegment2D(start, end);
-            image.Draw(line, new Bgr(Color.Blue), 1); */
+            image.Draw(line, new Bgr(Color.Black), 1); 
 
             Mat output = new Mat(image.Mat, new Rectangle(new Point(0, 0), image.Size));
             mainForm.image_array.RemoveAt(mainForm.image_array.Count-1);

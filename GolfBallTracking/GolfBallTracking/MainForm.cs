@@ -111,14 +111,50 @@ namespace GolfBallTracking
                     MCvScalar color = new MCvScalar(255, 0, 0);
                     foreach (Point p in trueBallPoints) 
                     {
-                        kalman.State = new Matrix<double>(new Double[4, 1] { { p.X }, { p.Y }, { 0.3 }, { 0.1 } });
+                        kalman.State = new Matrix<double>(new Double[4, 1] { { p.X }, { p.Y }, { 0.5 }, { 0.5 } });
                         kalman.Predict();
                         kalman.Correct(kalman.GetMeasurement());
                         kalman.GoToNextState();
-                        Point estimated = new Point((int)kalman.State.Data[0,0], (int)kalman.State.Data[1,0]);
+                        Point estimated = new Point((int)Math.Ceiling(kalman.State.Data[0,0]), 
+                            (int)Math.Ceiling(kalman.State.Data[1,0]));
                         Rectangle rect = new Rectangle(estimated.X, estimated.Y, 1, 1);
                         CvInvoke.Rectangle(image_array.Last(), rect, color, 2, LineType.EightConnected);
-                    } 
+                        kalmanPoints.Add(estimated);
+
+                        kalman.State = new Matrix<double>(new Double[4, 1] { { estimated.X }, { estimated.Y }, { 0.5 }, { 0.5 } });
+                        kalman.Predict();
+                        kalman.Correct(kalman.GetMeasurement());
+                        kalman.GoToNextState();
+                        estimated = new Point((int)Math.Ceiling(kalman.State.Data[0, 0]),
+                            (int)Math.Ceiling(kalman.State.Data[1, 0]));
+                        rect = new Rectangle(estimated.X, estimated.Y, 1, 1);
+                        CvInvoke.Rectangle(image_array.Last(), rect, color, 1, LineType.EightConnected);
+                        kalmanPoints.Add(estimated);
+                    }
+         
+                    Point[] points = new Point[2];
+                    Point prevPoint = new Point(-1, -1);
+                    color = new MCvScalar(0, 0, 0);
+                    foreach (Point p in trueBallPoints) 
+                    {
+                        if (prevPoint.X < 0)
+                        {
+                            prevPoint = p;
+                            continue;
+                        }
+
+                        if ( Math.Abs(p.X - prevPoint.X) < 20  &&
+                                Math.Abs(p.Y - prevPoint.Y) < 16)
+                        {
+                            points[0] = prevPoint;
+                            points[1] = p;
+                            CvInvoke.Polylines(image_array.Last(), points, false, color, 1, LineType.EightConnected);
+                        }
+                       prevPoint = p;   
+                    }
+                    
+                    
+                    
                 }
                 
                 frameSlider.Value = currentFrameNumber++;
@@ -132,7 +168,10 @@ namespace GolfBallTracking
 
         private void btnStartTracking_Click(object sender, EventArgs e)
         {
-            tracking = true; 
+            tracking = true;
+            nudTemplateSize.Enabled = true;
+            nudValue.Enabled = true;
+            btnClearBgr.Enabled = true;
         }
 
         private void btnPlayPauseVideo_Click(object sender, EventArgs e)
@@ -175,6 +214,7 @@ namespace GolfBallTracking
             trueBallPoints.Clear();
             possibleBallPoints.Clear();
             possibleBallsInFrame.Clear();
+            kalmanPoints.Clear();
         }
 
         public void showGrayImage(Image<Gray, Byte> image) 
@@ -182,10 +222,6 @@ namespace GolfBallTracking
             pbBall.Image = image.Bitmap;
         }
 
-        public void showGrayImageThreshold(Mat image)
-        {
-            pictureBox1.Image = image.Bitmap;
-        }
 
         private void nudValue_ValueChanged(object sender, EventArgs e)
         {
@@ -193,13 +229,6 @@ namespace GolfBallTracking
                 BallDetection.Instance.Detect(this, image_array.Last(), (int)nudValue.Value);
         }
 
-        public void showChannels(Mat[] channels, Mat img)
-        {
-            pictureBox2.Image = channels[0].Bitmap;
-            pictureBox3.Image = channels[1].Bitmap;
-            pictureBox4.Image = channels[2].Bitmap;
-            pictureBox5.Image = img.Bitmap;
-        }
 
         public void KalmanFunctionInit() 
         {
@@ -230,12 +259,14 @@ namespace GolfBallTracking
 
             kalman = new Kalman(transitionMatrix, b, u, processNoise, measurementMatrix, measurementNoise);
             Console.WriteLine("Success.");
-          //  kalman.State = new Matrix<double>(new Double[4, 1] { { 1 }, { 2 }, { 0 }, { 0 } });
+           // kalman.State = new Matrix<double>(new Double[4, 1] { { 1 }, { 2 }, { 0 }, { 0 } });
             kalman.Covariance = new Matrix<double>(new Double[4, 4]);
             kalman.Covariance.SetIdentity();
 
-         //   kalman.Predict();
-         //   kalman.Correct(kalman.GetMeasurement());
+            /*
+            kalman.Predict();
+            kalman.Correct(kalman.GetMeasurement());
+            kalmanPoints.Add(new Point((int)kalman.State.Data[0,0], (int)kalman.State.Data[1,0])); */
         }
     }
 }
